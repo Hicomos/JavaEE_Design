@@ -5,7 +5,6 @@
  Source Server Type    : MySQL
  Source Server Version : 80402
  Source Host           : localhost:3306
- Source Schema         : xiaoyuanxuanshang
 
  Target Server Type    : MySQL
  Target Server Version : 80402

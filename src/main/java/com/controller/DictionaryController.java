@@ -250,13 +250,6 @@ public class DictionaryController {
                         for(List<String> data:dataList){
                             //循环
                             DictionaryEntity dictionaryEntity = new DictionaryEntity();
-//                            dictionaryEntity.setDicCode(data.get(0));                    //字段 要改的
-//                            dictionaryEntity.setDicName(data.get(0));                    //字段名 要改的
-//                            dictionaryEntity.setCodeIndex(Integer.valueOf(data.get(0)));   //编码 要改的
-//                            dictionaryEntity.setIndexName(data.get(0));                    //编码名字 要改的
-//                            dictionaryEntity.setSuperId(Integer.valueOf(data.get(0)));   //父字段id 要改的
-//                            dictionaryEntity.setBeizhu(data.get(0));                    //备注 要改的
-//                            dictionaryEntity.setCreateTime(date);//时间
                             dictionaryList.add(dictionaryEntity);
 
 
