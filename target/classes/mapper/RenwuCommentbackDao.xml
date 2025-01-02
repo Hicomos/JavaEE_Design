@@ -22,7 +22,7 @@
         ,jiequyonghu.jiequyonghu_phone as jiequyonghuPhone
         ,jiequyonghu.jiequyonghu_id_number as jiequyonghuIdNumber
         ,jiequyonghu.jiequyonghu_photo as jiequyonghuPhoto
-        ,jiequyonghu.new_money as newMoney
+        ,jiequyonghu.new_credit as newMoney
         ,jiequyonghu.wanchenglv as wanchenglv
         ,jiequyonghu.jiequyonghu_email as jiequyonghuEmail
         ,renwu.fabuyonghu_id as renwuFabuyonghuId

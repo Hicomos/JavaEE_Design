@@ -227,7 +227,7 @@ CREATE TABLE `renwu`  (
   `zhixing_time` timestamp NULL DEFAULT NULL COMMENT '任务执行时间',
   `renwu_address` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '执行地点',
   `renwu_types` int NULL DEFAULT NULL COMMENT '任务类型 Search111',
-  `renwu_jine` decimal(10, 2) NULL DEFAULT NULL COMMENT '悬赏金额',
+  `renwu_jine` decimal(10, 2) NULL DEFAULT NULL COMMENT '积分',
   `renwu_clicknum` int NULL DEFAULT NULL COMMENT '任务热度',
   `renwu_content` longtext CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL COMMENT '任务要求',
   `renwu_zhuangtai_types` int NULL DEFAULT NULL COMMENT '任务状态   Search111 ',
@@ -379,7 +379,7 @@ CREATE TABLE `renwu_order`  (
   `renwu_order_uuid_number` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '订单编号 Search111 ',
   `renwu_id` int NULL DEFAULT NULL COMMENT '任务',
   `jiequyonghu_id` int NULL DEFAULT NULL COMMENT '用户',
-  `renwu_order_true_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '悬赏金额',
+  `renwu_order_true_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '积分',
   `renwu_order_types` int NULL DEFAULT NULL COMMENT '订单类型 Search111 ',
   `insert_time` timestamp NULL DEFAULT NULL COMMENT '申请领取时间',
   `create_time` timestamp NULL DEFAULT NULL COMMENT '创建时间 show3 listShow',
@@ -421,8 +421,8 @@ INSERT INTO `token` VALUES (4, 1, 'admin', 'users', '管理员', 'uz5xt0qfcr6z91
 -- ----------------------------
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users`  (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `username` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '老师名',
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID号',
+  `username` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '用户名',
   `password` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '密码',
   `role` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT '管理员' COMMENT '角色',
   `addtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '新增时间',

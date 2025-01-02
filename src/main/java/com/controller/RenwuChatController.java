@@ -55,24 +55,11 @@ public class RenwuChatController {
 
     @Autowired
     private DictionaryService dictionaryService;//字典
-    @Autowired
-    private ForumService forumService;//论坛
-    @Autowired
-    private GonggaoService gonggaoService;//任务公告
+
     @Autowired
     private JiequyonghuService jiequyonghuService;//接取用户
     @Autowired
-    private RenwuService renwuService;//任务
-    @Autowired
-    private RenwuCollectionService renwuCollectionService;//任务收藏
-    @Autowired
-    private RenwuCommentbackService renwuCommentbackService;//任务评价
-    @Autowired
-    private RenwuOrderService renwuOrderService;//任务订单
-    @Autowired
     private FabuyonghuService fabuyonghuService;//发布用户
-    @Autowired
-    private UsersService usersService;//管理员
 
 
     /**
@@ -178,14 +165,6 @@ public class RenwuChatController {
         logger.debug("update方法:,,Controller:{},,renwuChat:{}",this.getClass().getName(),renwuChat.toString());
         RenwuChatEntity oldRenwuChatEntity = renwuChatService.selectById(renwuChat.getId());//查询原先数据
 
-        String role = String.valueOf(request.getSession().getAttribute("role"));
-//        if(false)
-//            return R.error(511,"永远不会进入");
-//        else if("接取用户".equals(role))
-//            renwuChat.setJiequyonghuId(Integer.valueOf(String.valueOf(request.getSession().getAttribute("userId"))));
-//        else if("发布用户".equals(role))
-//            renwuChat.setFabuyonghuId(Integer.valueOf(String.valueOf(request.getSession().getAttribute("userId"))));
-
             renwuChatService.updateById(renwuChat);//根据id更新
             return R.ok();
     }
@@ -235,16 +214,6 @@ public class RenwuChatController {
                         for(List<String> data:dataList){
                             //循环
                             RenwuChatEntity renwuChatEntity = new RenwuChatEntity();
-//                            renwuChatEntity.setJiequyonghuId(Integer.valueOf(data.get(0)));   //提问人 要改的
-//                            renwuChatEntity.setFabuyonghuId(Integer.valueOf(data.get(0)));   //回答人 要改的
-//                            renwuChatEntity.setRenwuChatIssueText(data.get(0));                    //问题 要改的
-//                            renwuChatEntity.setIssueTime(sdf.parse(data.get(0)));          //问题时间 要改的
-//                            renwuChatEntity.setRenwuChatReplyText(data.get(0));                    //回复 要改的
-//                            renwuChatEntity.setReplyTime(sdf.parse(data.get(0)));          //回复时间 要改的
-//                            renwuChatEntity.setZhuangtaiTypes(Integer.valueOf(data.get(0)));   //状态 要改的
-//                            renwuChatEntity.setRenwuChatTypes(Integer.valueOf(data.get(0)));   //数据类型 要改的
-//                            renwuChatEntity.setInsertTime(date);//时间
-//                            renwuChatEntity.setCreateTime(date);//时间
                             renwuChatList.add(renwuChatEntity);
 
 

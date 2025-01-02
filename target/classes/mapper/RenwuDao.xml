@@ -32,7 +32,7 @@
         ,fabuyonghu.fabuyonghu_phone as fabuyonghuPhone
         ,fabuyonghu.fabuyonghu_id_number as fabuyonghuIdNumber
         ,fabuyonghu.fabuyonghu_photo as fabuyonghuPhoto
-        ,fabuyonghu.new_money as newMoney
+        ,fabuyonghu.new_credit as newMoney
         ,fabuyonghu.fabuyonghu_email as fabuyonghuEmail
 
         FROM renwu  a

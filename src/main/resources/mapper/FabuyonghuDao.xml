@@ -12,7 +12,7 @@
         ,a.fabuyonghu_id_number as fabuyonghuIdNumber
         ,a.fabuyonghu_photo as fabuyonghuPhoto
         ,a.sex_types as sexTypes
-        ,a.new_money as newMoney
+        ,a.new_credit as newMoney
         ,a.fabuyonghu_email as fabuyonghuEmail
         ,a.create_time as createTime
     </sql>
@@ -49,10 +49,10 @@
                 and a.sex_types = #{params.sexTypes}
             </if>
             <if test="params.newMoneyStart != null ">
-                <![CDATA[  and a.new_money >= #{params.newMoneyStart}   ]]>
+                <![CDATA[  and a.new_credit >= #{params.newMoneyStart}   ]]>
             </if>
             <if test="params.newMoneyEnd != null ">
-                <![CDATA[  and a.new_money <= #{params.newMoneyEnd}   ]]>
+                <![CDATA[  and a.new_credit <= #{params.newMoneyEnd}   ]]>
             </if>
             <if test=" params.fabuyonghuEmail != '' and params.fabuyonghuEmail != null and params.fabuyonghuEmail != 'null' ">
                 and a.fabuyonghu_email like CONCAT('%',#{params.fabuyonghuEmail},'%')

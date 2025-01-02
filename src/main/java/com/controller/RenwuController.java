@@ -49,30 +49,14 @@ public class RenwuController {
     @Autowired
     private RenwuService renwuService;
 
-
-    @Autowired
-    private TokenService tokenService;
-
     @Autowired
     private DictionaryService dictionaryService;//字典
-    @Autowired
-    private ForumService forumService;//论坛
-    @Autowired
-    private GonggaoService gonggaoService;//任务公告
-    @Autowired
-    private JiequyonghuService jiequyonghuService;//接取用户
-    @Autowired
-    private RenwuChatService renwuChatService;//任务咨询
-    @Autowired
-    private RenwuCollectionService renwuCollectionService;//任务收藏
-    @Autowired
-    private RenwuCommentbackService renwuCommentbackService;//任务评价
+
     @Autowired
     private RenwuOrderService renwuOrderService;//任务订单
     @Autowired
     private FabuyonghuService fabuyonghuService;//发布用户
-    @Autowired
-    private UsersService usersService;//管理员
+
 
 
     /**
@@ -158,11 +142,6 @@ public class RenwuController {
 
 
             FabuyonghuEntity fabuyonghuEntity = fabuyonghuService.selectById(renwu.getFabuyonghuId());
-            double balance = fabuyonghuEntity.getNewMoney() - renwu.getRenwuJine();
-            if(balance<0){
-                return R.error("当前发布用户账户余额不够,请充值后再发布任务");
-            }
-            fabuyonghuEntity.setNewMoney(balance);
             fabuyonghuService.updateById(fabuyonghuEntity);
 
             renwu.setRenwuYesnoTypes(1);
@@ -185,11 +164,6 @@ public class RenwuController {
         logger.debug("update方法:,,Controller:{},,renwu:{}",this.getClass().getName(),renwu.toString());
         RenwuEntity oldRenwuEntity = renwuService.selectById(renwu.getId());//查询原先数据
 
-        String role = String.valueOf(request.getSession().getAttribute("role"));
-//        if(false)
-//            return R.error(511,"永远不会进入");
-//        else if("发布用户".equals(role))
-//            renwu.setFabuyonghuId(Integer.valueOf(String.valueOf(request.getSession().getAttribute("userId"))));
         if("".equals(renwu.getRenwuPhoto()) || "null".equals(renwu.getRenwuPhoto())){
                 renwu.setRenwuPhoto(null);
         }
@@ -211,11 +185,6 @@ public class RenwuController {
 
         RenwuEntity oldRenwu = renwuService.selectById(renwuEntity.getId());//查询原先数据
 
-//        if(renwuEntity.getRenwuYesnoTypes() == 2){//通过
-//            renwuEntity.setRenwuTypes();
-//        }else if(renwuEntity.getRenwuYesnoTypes() == 3){//拒绝
-//            renwuEntity.setRenwuTypes();
-//        }
         renwuEntity.setRenwuShenheTime(new Date());//审核时间
         renwuService.updateById(renwuEntity);//审核
 
@@ -239,6 +208,8 @@ public class RenwuController {
         if(list != null && list.size() >0){
             renwuService.updateBatchById(list);
         }
+        renwuService.deleteBatchIds(Arrays.asList(ids));
+        renwuOrderService.deleteBatchIds(Arrays.asList(ids));
 
         return R.ok();
     }
@@ -274,24 +245,6 @@ public class RenwuController {
                         for(List<String> data:dataList){
                             //循环
                             RenwuEntity renwuEntity = new RenwuEntity();
-//                            renwuEntity.setFabuyonghuId(Integer.valueOf(data.get(0)));   //发布用户 要改的
-//                            renwuEntity.setRenwuName(data.get(0));                    //任务名称 要改的
-//                            renwuEntity.setRenwuUuidNumber(data.get(0));                    //任务编号 要改的
-//                            renwuEntity.setRenwuPhoto("");//详情和图片
-//                            renwuEntity.setRenwuFile(data.get(0));                    //任务附件 要改的
-//                            renwuEntity.setZhixingTime(sdf.parse(data.get(0)));          //任务执行时间 要改的
-//                            renwuEntity.setRenwuAddress(data.get(0));                    //执行地点 要改的
-//                            renwuEntity.setRenwuTypes(Integer.valueOf(data.get(0)));   //任务类型 要改的
-//                            renwuEntity.setRenwuJine(data.get(0));                    //悬赏金额 要改的
-//                            renwuEntity.setRenwuClicknum(Integer.valueOf(data.get(0)));   //任务热度 要改的
-//                            renwuEntity.setRenwuContent("");//详情和图片
-//                            renwuEntity.setRenwuZhuangtaiTypes(Integer.valueOf(data.get(0)));   //任务状态 要改的
-//                            renwuEntity.setRenwuDelete(1);//逻辑删除字段
-//                            renwuEntity.setInsertTime(date);//时间
-//                            renwuEntity.setRenwuYesnoTypes(Integer.valueOf(data.get(0)));   //申请状态 要改的
-//                            renwuEntity.setRenwuYesnoText(data.get(0));                    //审核意见 要改的
-//                            renwuEntity.setRenwuShenheTime(sdf.parse(data.get(0)));          //审核时间 要改的
-//                            renwuEntity.setCreateTime(date);//时间
                             renwuList.add(renwuEntity);
 
 
@@ -399,9 +352,11 @@ public class RenwuController {
 
         CommonUtil.checkMap(params);
         PageUtils page = renwuService.queryPage(params);
+        //
 
         //字典表数据转换
         List<RenwuView> list =(List<RenwuView>)page.getList();
+
         for(RenwuView c:list)
             dictionaryService.dictionaryConvert(c, request); //修改对应字典表字段
 

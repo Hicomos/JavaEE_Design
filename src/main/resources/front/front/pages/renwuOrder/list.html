@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="utf-8">
-    <title>任务订单</title>
+    <title>任务列表</title>
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <meta name="renderer" content="webkit">
@@ -131,7 +131,7 @@
     </el-dialog>
 <!-- 标题 -->
      <div class="index-title sub_backgroundColor" :style='{"padding":"10px","boxShadow":"0 0 2px rgba(160, 67, 26, 1)","margin":"10px auto","borderColor":"rgba(0,0,0,.3)","color":"rgba(255, 255, 255, 1)","borderRadius":"4px","borderWidth":"0","fontSize":"20px","borderStyle":"solid","height":"auto"}'>
-         <span>USER / ORDER</span><span>我的任务订单</span>
+         <span>USER / ORDER</span><span>我的任务列表</span>
      </div>
 
     <el-dialog title="评论" :visible.sync="renwuCommentbackModal" :modal-append-to-body="false">
@@ -151,16 +151,6 @@
         </div>
     </el-dialog>
 
-
-
-    <el-dialog title="统计报表" :visible.sync="chartVisiable" width="50%" :modal-append-to-body="false">
-        <el-date-picker v-model="echartsDate" type="month" placeholder="选择月"> </el-date-picker>
-        <el-button @click="chartDialog()">查询</el-button>
-        <div id="statistic" style="width:100%;height:600px;"></div>
-        <span slot="footer" class="dialog-footer">
-				<el-button @click="chartVisiable = false">关闭</el-button>
-			</span>
-    </el-dialog>
 
     <!-- 标题 -->
     <div class="center-container">
@@ -197,7 +187,7 @@
                     <th>任务照片</th>
                     <!-- 当前表 -->
                     <th>订单编号</th>
-                    <th>悬赏金额</th>
+                    <th>积分</th>
                     <th>订单类型</th>
                     <th>申请领取时间</th>
                     <th>操作</th>

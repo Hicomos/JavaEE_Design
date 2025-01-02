@@ -55,24 +55,7 @@ public class GonggaoController {
 
     @Autowired
     private DictionaryService dictionaryService;//字典
-    @Autowired
-    private ForumService forumService;//论坛
-    @Autowired
-    private JiequyonghuService jiequyonghuService;//接取用户
-    @Autowired
-    private RenwuService renwuService;//任务
-    @Autowired
-    private RenwuChatService renwuChatService;//任务咨询
-    @Autowired
-    private RenwuCollectionService renwuCollectionService;//任务收藏
-    @Autowired
-    private RenwuCommentbackService renwuCommentbackService;//任务评价
-    @Autowired
-    private RenwuOrderService renwuOrderService;//任务订单
-    @Autowired
-    private FabuyonghuService fabuyonghuService;//发布用户
-    @Autowired
-    private UsersService usersService;//管理员
+
 
 
     /**

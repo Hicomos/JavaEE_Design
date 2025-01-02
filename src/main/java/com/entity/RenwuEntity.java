@@ -128,9 +128,9 @@ public class RenwuEntity<T> implements Serializable {
 
 
     /**
-     * 悬赏金额
+     * 积分
      */
-    @ColumnInfo(comment="悬赏金额",type="decimal(10,2)")
+    @ColumnInfo(comment="积分",type="decimal(10,2)")
     @TableField(value = "renwu_jine")
 
     private Double renwuJine;

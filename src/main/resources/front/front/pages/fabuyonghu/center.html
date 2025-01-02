@@ -266,7 +266,7 @@
                             </el-select>
                         </div>
                     </div>
-                    <div class="layui-form-item main_borderColor"  :style='{"padding":"10px","boxShadow":"0 0 0px rgba(255,0,0,.8)","margin":"0 0 10px 0","backgroundColor":"#fff","borderRadius":"1px","borderWidth":"0 0 1px 0","borderStyle":"solid"}'>
+                    <!--div class="layui-form-item main_borderColor"  :style='{"padding":"10px","boxShadow":"0 0 0px rgba(255,0,0,.8)","margin":"0 0 10px 0","backgroundColor":"#fff","borderRadius":"1px","borderWidth":"0 0 1px 0","borderStyle":"solid"}'>
                         <label  :style='{"width":"110px","padding":"0 12px 0 0","fontSize":"15px","color":"#333","textAlign":"left"}' class="layui-form-label">余额</label>
                         <div class="layui-input-inline input">
                             <input type="number" v-model="detail.newMoney" name="newMoney" id="newMoney" placeholder="余额" autocomplete="off" class="layui-input" disabled="disabled">
@@ -274,10 +274,8 @@
                         <div class="layui-form-mid layui-word-aux">
                             <i class="layui-icon" style="font-size: 20px;color: red;">&#xe65e;</i>
                             <a id="btn-recharge" href="javascript:void(0)">点我充值</a>
-                            <!--<div style="text-align: center;width: 100px;height: 41px;line-height: 41px;background-color: rgb(59 161 82);border-radius: 6px;margin-left: 10px;"
-                                 @click="" >充值会员</div>-->
                         </div>
-                    </div>
+                    </div-->
                     <div class="layui-form-item main_borderColor"  :style='{"padding":"10px","boxShadow":"0 0 0px rgba(255,0,0,.8)","margin":"0 0 10px 0","backgroundColor":"#fff","borderRadius":"1px","borderWidth":"0 0 1px 0","borderStyle":"solid"}'>
                         <label  :style='{"width":"110px","padding":"0 12px 0 0","fontSize":"15px","color":"#333","textAlign":"left"}' class="layui-form-label">
                             发布用户邮箱
@@ -550,10 +548,7 @@
 
             http.request(`fabuyonghu/session`, 'get', {}, function(data) {
                 // 表单赋值
-                // form.val("myForm", data.data);
                 vue.detail = data.data
-                // 图片赋值
-                //jquery("#fabuyonghuPhotoImg").attr("src", data.data.fabuyonghuPhoto);
             });
 
             // 提交表单

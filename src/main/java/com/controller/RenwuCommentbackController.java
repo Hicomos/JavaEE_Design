@@ -56,23 +56,10 @@ public class RenwuCommentbackController {
     @Autowired
     private DictionaryService dictionaryService;//字典
     @Autowired
-    private ForumService forumService;//论坛
-    @Autowired
-    private GonggaoService gonggaoService;//任务公告
-    @Autowired
     private JiequyonghuService jiequyonghuService;//接取用户
     @Autowired
     private RenwuService renwuService;//任务
-    @Autowired
-    private RenwuChatService renwuChatService;//任务咨询
-    @Autowired
-    private RenwuCollectionService renwuCollectionService;//任务收藏
-    @Autowired
-    private RenwuOrderService renwuOrderService;//任务订单
-    @Autowired
-    private FabuyonghuService fabuyonghuService;//发布用户
-    @Autowired
-    private UsersService usersService;//管理员
+
 
 
     /**
@@ -162,11 +149,6 @@ public class RenwuCommentbackController {
         logger.debug("update方法:,,Controller:{},,renwuCommentback:{}",this.getClass().getName(),renwuCommentback.toString());
         RenwuCommentbackEntity oldRenwuCommentbackEntity = renwuCommentbackService.selectById(renwuCommentback.getId());//查询原先数据
 
-        String role = String.valueOf(request.getSession().getAttribute("role"));
-//        if(false)
-//            return R.error(511,"永远不会进入");
-//        else if("接取用户".equals(role))
-//            renwuCommentback.setJiequyonghuId(Integer.valueOf(String.valueOf(request.getSession().getAttribute("userId"))));
         renwuCommentback.setUpdateTime(new Date());
 
             renwuCommentbackService.updateById(renwuCommentback);//根据id更新

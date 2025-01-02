@@ -129,7 +129,7 @@
 
             let table = localStorage.getItem("userTable");
             if(table){
-                http.request(table+"/session", 'get', {}, function (data) {
+                http.request(table+"/sessions", 'get', {}, function (data) {
                     vue.user = data.data;
                 });
             }

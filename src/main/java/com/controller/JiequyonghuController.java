@@ -32,12 +32,7 @@ import com.utils.PageUtils;
 import com.utils.R;
 import com.alibaba.fastjson.*;
 
-/**
- * 接取用户
- * 后端接口
- * @author
- * @email
-*/
+
 @RestController
 @Controller
 @RequestMapping("/jiequyonghu")
@@ -55,24 +50,7 @@ public class JiequyonghuController {
 
     @Autowired
     private DictionaryService dictionaryService;//字典
-    @Autowired
-    private ForumService forumService;//论坛
-    @Autowired
-    private GonggaoService gonggaoService;//任务公告
-    @Autowired
-    private RenwuService renwuService;//任务
-    @Autowired
-    private RenwuChatService renwuChatService;//任务咨询
-    @Autowired
-    private RenwuCollectionService renwuCollectionService;//任务收藏
-    @Autowired
-    private RenwuCommentbackService renwuCommentbackService;//任务评价
-    @Autowired
-    private RenwuOrderService renwuOrderService;//任务订单
-    @Autowired
-    private FabuyonghuService fabuyonghuService;//发布用户
-    @Autowired
-    private UsersService usersService;//管理员
+
 
 
     /**
@@ -157,15 +135,9 @@ public class JiequyonghuController {
     @RequestMapping("/update")
     public R update(@RequestBody JiequyonghuEntity jiequyonghu, HttpServletRequest request) throws NoSuchFieldException, ClassNotFoundException, IllegalAccessException, InstantiationException {
         logger.debug("update方法:,,Controller:{},,jiequyonghu:{}",this.getClass().getName(),jiequyonghu.toString());
-        JiequyonghuEntity oldJiequyonghuEntity = jiequyonghuService.selectById(jiequyonghu.getId());//查询原先数据
-
-        String role = String.valueOf(request.getSession().getAttribute("role"));
-//        if(false)
-//            return R.error(511,"永远不会进入");
         if("".equals(jiequyonghu.getJiequyonghuPhoto()) || "null".equals(jiequyonghu.getJiequyonghuPhoto())){
                 jiequyonghu.setJiequyonghuPhoto(null);
         }
-
             jiequyonghuService.updateById(jiequyonghu);//根据id更新
             return R.ok();
     }
@@ -215,17 +187,6 @@ public class JiequyonghuController {
                         for(List<String> data:dataList){
                             //循环
                             JiequyonghuEntity jiequyonghuEntity = new JiequyonghuEntity();
-//                            jiequyonghuEntity.setUsername(data.get(0));                    //账户 要改的
-//                            //jiequyonghuEntity.setPassword("123456");//密码
-//                            jiequyonghuEntity.setJiequyonghuName(data.get(0));                    //接取用户姓名 要改的
-//                            jiequyonghuEntity.setJiequyonghuPhone(data.get(0));                    //接取用户手机号 要改的
-//                            jiequyonghuEntity.setJiequyonghuIdNumber(data.get(0));                    //接取用户身份证号 要改的
-//                            jiequyonghuEntity.setJiequyonghuPhoto("");//详情和图片
-//                            jiequyonghuEntity.setSexTypes(Integer.valueOf(data.get(0)));   //性别 要改的
-//                            jiequyonghuEntity.setNewMoney(data.get(0));                    //余额 要改的
-//                            jiequyonghuEntity.setWanchenglv(Integer.valueOf(data.get(0)));   //完成率(百分比) 要改的
-//                            jiequyonghuEntity.setJiequyonghuEmail(data.get(0));                    //接取用户邮箱 要改的
-//                            jiequyonghuEntity.setCreateTime(date);//时间
                             jiequyonghuList.add(jiequyonghuEntity);
 
 

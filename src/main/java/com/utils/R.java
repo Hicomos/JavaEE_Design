@@ -5,6 +5,8 @@ import java.util.Map;
 
 /**
  * 返回数据
+ * 判断数据处理是否成功，以及传递消息
+ * 不做业务处理
  */
 public class R extends HashMap<String, Object> {
 	private static final long serialVersionUID = 1L;
@@ -45,7 +47,7 @@ public class R extends HashMap<String, Object> {
 	}
 
 	public R put(String key, Object value) {
-		super.put(key, value);
+		super.put(key, value);//键值对映射
 		return this;
 	}
 }

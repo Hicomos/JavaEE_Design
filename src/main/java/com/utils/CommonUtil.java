@@ -42,7 +42,7 @@ public class CommonUtil {
             }else if("limit".equals(key)){limit=false;
             }else if("sort".equals(key)){sort=false;
             }else if("order".equals(key)){order=false;
-            }
+            }//参数：页面初始页号、最大页数、排序规则、升降序
         }
         if(page){params.put("page","1");}
         if(limit){params.put("limit","10");}

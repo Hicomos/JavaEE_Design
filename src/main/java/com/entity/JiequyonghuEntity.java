@@ -119,8 +119,8 @@ public class JiequyonghuEntity<T> implements Serializable {
     /**
      * 余额
      */
-    @ColumnInfo(comment="余额",type="decimal(10,2)")
-    @TableField(value = "new_money")
+    @ColumnInfo(comment="积分",type="decimal(10,2)")
+    @TableField(value = "new_credit")
 
     private Double newMoney;
 

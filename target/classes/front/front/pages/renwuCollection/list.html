@@ -135,14 +135,13 @@
      </div>
     <!-- 标题 -->
     <div class="center-container">
-        <!-- 个人中心菜单 config.js-->
             <div class="left-container" :style='{"backgroundColor":"#fff","padding":"0","boxShadow":"0px 0px 1px rgba(181, 181, 181, 1)","margin":"0","borderColor":"rgba(191, 191, 191, 1)","backgroundColor":"rgba(255, 255, 255, 1)","borderRadius":"0","borderWidth":"0 0 1px 0","width":"20%","borderStyle":"solid"}'>
                 <ul class="layui-nav layui-nav-tree">
                     <li v-for="(item,index) in centerMenu" v-bind:key="index" class="layui-nav-item" :class="item.url=='../renwuCollection/list.html'?'layui-this':''">
                         <a :href="'javascript:jump(\''+item.url+'\')'">{{item.name}}</a>
                     </li>
                 </ul>
-            </div>        <!-- 个人中心菜单 -->
+            </div>
         <div class="right-container sub_borderColor" :style='{"padding":"20px","boxShadow":"0px rgba(255,0,0,.8)","margin":"0","backgroundColor":"#fff","borderRadius":"0","borderWidth":"1px","borderStyle":"solid","width":"80%"}'>
             <div style="display: flex;flex-wrap: wrap;justify-content: space-evenly;">
                 <div v-for="(item,index) in dataList" :key="index" style="flex: 0 0 25%;padding: 3px">

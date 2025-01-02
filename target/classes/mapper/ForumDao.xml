@@ -25,14 +25,14 @@
         ,jiequyonghu.jiequyonghu_phone as jiequyonghuPhone
         ,jiequyonghu.jiequyonghu_id_number as jiequyonghuIdNumber
         ,jiequyonghu.jiequyonghu_photo as jiequyonghuPhoto
-        ,jiequyonghu.new_money as newMoney
+        ,jiequyonghu.new_credit as newMoney
         ,jiequyonghu.wanchenglv as wanchenglv
         ,jiequyonghu.jiequyonghu_email as jiequyonghuEmail
         ,fabuyonghu.fabuyonghu_name as fabuyonghuName
         ,fabuyonghu.fabuyonghu_phone as fabuyonghuPhone
         ,fabuyonghu.fabuyonghu_id_number as fabuyonghuIdNumber
         ,fabuyonghu.fabuyonghu_photo as fabuyonghuPhoto
-        ,fabuyonghu.new_money as newMoney
+        ,fabuyonghu.new_credit as newMoney
         ,fabuyonghu.fabuyonghu_email as fabuyonghuEmail
         ,users.username as uusername
         ,users.password as upassword
@@ -114,10 +114,10 @@
                 and jiequyonghu.jiequyonghu_id_number like CONCAT('%',#{params.jiequyonghuIdNumber},'%')
             </if>
             <if test="params.newMoneyStart != null ">
-                <![CDATA[  and jiequyonghu.new_money >= #{params.newMoneyStart}   ]]>
+                <![CDATA[  and jiequyonghu.new_credit >= #{params.newMoneyStart}   ]]>
             </if>
             <if test="params.newMoneyEnd != null ">
-                <![CDATA[  and jiequyonghu.new_money <= #{params.newMoneyEnd}   ]]>
+                <![CDATA[  and jiequyonghu.new_credit <= #{params.newMoneyEnd}   ]]>
             </if>
             <if test="params.wanchenglvStart != null  and params.wanchenglvStart != '' ">
                 <![CDATA[  and jiequyonghu.wanchenglv >= #{params.wanchenglvStart}   ]]>
@@ -145,10 +145,10 @@
                 and fabuyonghu.fabuyonghu_id_number like CONCAT('%',#{params.fabuyonghuIdNumber},'%')
             </if>
             <if test="params.newMoneyStart != null ">
-                <![CDATA[  and fabuyonghu.new_money >= #{params.newMoneyStart}   ]]>
+                <![CDATA[  and fabuyonghu.new_credit >= #{params.newMoneyStart}   ]]>
             </if>
             <if test="params.newMoneyEnd != null ">
-                <![CDATA[  and fabuyonghu.new_money <= #{params.newMoneyEnd}   ]]>
+                <![CDATA[  and fabuyonghu.new_credit <= #{params.newMoneyEnd}   ]]>
             </if>
             <if test=" params.fabuyonghuEmail != '' and params.fabuyonghuEmail != null and params.fabuyonghuEmail != 'null' ">
                 and fabuyonghu.fabuyonghu_email like CONCAT('%',#{params.fabuyonghuEmail},'%')

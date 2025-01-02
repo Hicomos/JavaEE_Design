@@ -12,7 +12,7 @@
         ,a.jiequyonghu_id_number as jiequyonghuIdNumber
         ,a.jiequyonghu_photo as jiequyonghuPhoto
         ,a.sex_types as sexTypes
-        ,a.new_money as newMoney
+        ,a.new_credit as newMoney
         ,a.wanchenglv as wanchenglv
         ,a.jiequyonghu_email as jiequyonghuEmail
         ,a.create_time as createTime

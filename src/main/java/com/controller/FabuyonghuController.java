@@ -55,24 +55,6 @@ public class FabuyonghuController {
 
     @Autowired
     private DictionaryService dictionaryService;//字典
-    @Autowired
-    private ForumService forumService;//论坛
-    @Autowired
-    private GonggaoService gonggaoService;//任务公告
-    @Autowired
-    private JiequyonghuService jiequyonghuService;//接取用户
-    @Autowired
-    private RenwuService renwuService;//任务
-    @Autowired
-    private RenwuChatService renwuChatService;//任务咨询
-    @Autowired
-    private RenwuCollectionService renwuCollectionService;//任务收藏
-    @Autowired
-    private RenwuCommentbackService renwuCommentbackService;//任务评价
-    @Autowired
-    private RenwuOrderService renwuOrderService;//任务订单
-    @Autowired
-    private UsersService usersService;//管理员
 
 
     /**
@@ -159,9 +141,6 @@ public class FabuyonghuController {
         logger.debug("update方法:,,Controller:{},,fabuyonghu:{}",this.getClass().getName(),fabuyonghu.toString());
         FabuyonghuEntity oldFabuyonghuEntity = fabuyonghuService.selectById(fabuyonghu.getId());//查询原先数据
 
-        String role = String.valueOf(request.getSession().getAttribute("role"));
-//        if(false)
-//            return R.error(511,"永远不会进入");
         if("".equals(fabuyonghu.getFabuyonghuPhoto()) || "null".equals(fabuyonghu.getFabuyonghuPhoto())){
                 fabuyonghu.setFabuyonghuPhoto(null);
         }
@@ -215,16 +194,6 @@ public class FabuyonghuController {
                         for(List<String> data:dataList){
                             //循环
                             FabuyonghuEntity fabuyonghuEntity = new FabuyonghuEntity();
-//                            fabuyonghuEntity.setUsername(data.get(0));                    //账户 要改的
-//                            //fabuyonghuEntity.setPassword("123456");//密码
-//                            fabuyonghuEntity.setFabuyonghuName(data.get(0));                    //发布用户姓名 要改的
-//                            fabuyonghuEntity.setFabuyonghuPhone(data.get(0));                    //发布用户手机号 要改的
-//                            fabuyonghuEntity.setFabuyonghuIdNumber(data.get(0));                    //发布用户身份证号 要改的
-//                            fabuyonghuEntity.setFabuyonghuPhoto("");//详情和图片
-//                            fabuyonghuEntity.setSexTypes(Integer.valueOf(data.get(0)));   //性别 要改的
-//                            fabuyonghuEntity.setNewMoney(data.get(0));                    //余额 要改的
-//                            fabuyonghuEntity.setFabuyonghuEmail(data.get(0));                    //发布用户邮箱 要改的
-//                            fabuyonghuEntity.setCreateTime(date);//时间
                             fabuyonghuList.add(fabuyonghuEntity);
 
 
@@ -393,7 +362,7 @@ public class FabuyonghuController {
     /**
     * 获取用户的session用户信息
     */
-    @RequestMapping("/session")
+    @RequestMapping("/sessions")
     public R getCurrFabuyonghu(HttpServletRequest request){
         Integer id = (Integer)request.getSession().getAttribute("userId");
         FabuyonghuEntity fabuyonghu = fabuyonghuService.selectById(id);

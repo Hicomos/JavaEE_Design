@@ -120,7 +120,7 @@ public class FabuyonghuEntity<T> implements Serializable {
      * 余额
      */
     @ColumnInfo(comment="余额",type="decimal(10,2)")
-    @TableField(value = "new_money")
+    @TableField(value = "new_credit")
 
     private Double newMoney;
 

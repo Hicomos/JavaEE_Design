@@ -37,7 +37,7 @@ var centerMenu = [
         url: '../renwuCollection/list.html'
     }
     ,{
-        name: '任务订单',
+        name: '任务列表',
         url: '../renwuOrder/list.html'
     }
 

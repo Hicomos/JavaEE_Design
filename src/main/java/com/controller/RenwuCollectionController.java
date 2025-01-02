@@ -51,28 +51,12 @@ public class RenwuCollectionController {
 
 
     @Autowired
-    private TokenService tokenService;
-
-    @Autowired
     private DictionaryService dictionaryService;//字典
-    @Autowired
-    private ForumService forumService;//论坛
-    @Autowired
-    private GonggaoService gonggaoService;//任务公告
+
     @Autowired
     private JiequyonghuService jiequyonghuService;//接取用户
     @Autowired
-    private RenwuService renwuService;//任务
-    @Autowired
-    private RenwuChatService renwuChatService;//任务咨询
-    @Autowired
-    private RenwuCommentbackService renwuCommentbackService;//任务评价
-    @Autowired
-    private RenwuOrderService renwuOrderService;//任务订单
-    @Autowired
-    private FabuyonghuService fabuyonghuService;//发布用户
-    @Autowired
-    private UsersService usersService;//管理员
+    private RenwuService renwuService;//任务d
 
 
     /**
@@ -174,10 +158,6 @@ public class RenwuCollectionController {
         RenwuCollectionEntity oldRenwuCollectionEntity = renwuCollectionService.selectById(renwuCollection.getId());//查询原先数据
 
         String role = String.valueOf(request.getSession().getAttribute("role"));
-//        if(false)
-//            return R.error(511,"永远不会进入");
-//        else if("接取用户".equals(role))
-//            renwuCollection.setJiequyonghuId(Integer.valueOf(String.valueOf(request.getSession().getAttribute("userId"))));
 
             renwuCollectionService.updateById(renwuCollection);//根据id更新
             return R.ok();
@@ -228,11 +208,6 @@ public class RenwuCollectionController {
                         for(List<String> data:dataList){
                             //循环
                             RenwuCollectionEntity renwuCollectionEntity = new RenwuCollectionEntity();
-//                            renwuCollectionEntity.setRenwuId(Integer.valueOf(data.get(0)));   //任务 要改的
-//                            renwuCollectionEntity.setJiequyonghuId(Integer.valueOf(data.get(0)));   //用户 要改的
-//                            renwuCollectionEntity.setRenwuCollectionTypes(Integer.valueOf(data.get(0)));   //类型 要改的
-//                            renwuCollectionEntity.setInsertTime(date);//时间
-//                            renwuCollectionEntity.setCreateTime(date);//时间
                             renwuCollectionList.add(renwuCollectionEntity);
 
 
@@ -257,13 +232,13 @@ public class RenwuCollectionController {
     /**
     * 前端列表
     */
-    @IgnoreAuth
-    @RequestMapping("/list")
+    @IgnoreAuth//不需要检查权限
+    @RequestMapping("/list")//映射路径
     public R list(@RequestParam Map<String, Object> params, HttpServletRequest request){
         logger.debug("list方法:,,Controller:{},,params:{}",this.getClass().getName(),JSONObject.toJSONString(params));
 
-        CommonUtil.checkMap(params);
-        PageUtils page = renwuCollectionService.queryPage(params);
+        CommonUtil.checkMap(params);//对分页参数进行处理
+        PageUtils page = renwuCollectionService.queryPage(params);//包含前端的参数，用户ID等等
 
         //字典表数据转换
         List<RenwuCollectionView> list =(List<RenwuCollectionView>)page.getList();

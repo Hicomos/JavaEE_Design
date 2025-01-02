@@ -51,28 +51,13 @@ public class RenwuOrderController {
 
 
     @Autowired
-    private TokenService tokenService;
-
-    @Autowired
     private DictionaryService dictionaryService;//字典
-    @Autowired
-    private ForumService forumService;//论坛
-    @Autowired
-    private GonggaoService gonggaoService;//任务公告
     @Autowired
     private JiequyonghuService jiequyonghuService;//接取用户
     @Autowired
     private RenwuService renwuService;//任务
     @Autowired
-    private RenwuChatService renwuChatService;//任务咨询
-    @Autowired
-    private RenwuCollectionService renwuCollectionService;//任务收藏
-    @Autowired
     private RenwuCommentbackService renwuCommentbackService;//任务评价
-    @Autowired
-    private FabuyonghuService fabuyonghuService;//发布用户
-    @Autowired
-    private UsersService usersService;//管理员
 
 
     /**
@@ -217,13 +202,7 @@ public class RenwuOrderController {
                         for(List<String> data:dataList){
                             //循环
                             RenwuOrderEntity renwuOrderEntity = new RenwuOrderEntity();
-//                            renwuOrderEntity.setRenwuOrderUuidNumber(data.get(0));                    //订单编号 要改的
-//                            renwuOrderEntity.setRenwuId(Integer.valueOf(data.get(0)));   //任务 要改的
-//                            renwuOrderEntity.setJiequyonghuId(Integer.valueOf(data.get(0)));   //用户 要改的
-//                            renwuOrderEntity.setRenwuOrderTruePrice(data.get(0));                    //悬赏金额 要改的
-//                            renwuOrderEntity.setRenwuOrderTypes(Integer.valueOf(data.get(0)));   //订单类型 要改的
-//                            renwuOrderEntity.setInsertTime(date);//时间
-//                            renwuOrderEntity.setCreateTime(date);//时间
+
                             renwuOrderList.add(renwuOrderEntity);
 
 
@@ -340,7 +319,7 @@ public class RenwuOrderController {
             Double buyJifen =0.0;
             Integer userId = (Integer) request.getSession().getAttribute("userId");
             renwuOrder.setRenwuOrderTypes(101); //设置订单状态为已申请领取
-            renwuOrder.setRenwuOrderTruePrice(renwuEntity.getRenwuJine()); //设置实付价格
+            renwuOrder.setRenwuOrderTruePrice(renwuEntity.getRenwuJine()); //设置
             renwuOrder.setJiequyonghuId(userId); //设置订单支付人id
             renwuOrder.setRenwuOrderUuidNumber(String.valueOf(new Date().getTime()));
             renwuOrder.setInsertTime(new Date());
@@ -417,12 +396,7 @@ public class RenwuOrderController {
     public R deliver(Integer id  , HttpServletRequest request){
         logger.debug("refund:,,Controller:{},,ids:{}",this.getClass().getName(),id.toString());
 
-
         RenwuOrderEntity  renwuOrderEntity = renwuOrderService.selectById(id);
-
-
-
-
 
         renwuOrderEntity.setRenwuOrderTypes(103);//设置订单状态为已同意领取
         renwuOrderService.updateById( renwuOrderEntity);
@@ -433,8 +407,6 @@ public class RenwuOrderController {
         }
         renwuEntity.setRenwuZhuangtaiTypes(2);
         renwuService.updateById(renwuEntity);
-
-
 
         return R.ok();
     }

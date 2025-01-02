@@ -267,28 +267,26 @@
                         </div>
                     </div>
                     <div class="layui-form-item main_borderColor"  :style='{"padding":"10px","boxShadow":"0 0 0px rgba(255,0,0,.8)","margin":"0 0 10px 0","backgroundColor":"#fff","borderRadius":"1px","borderWidth":"0 0 1px 0","borderStyle":"solid"}'>
-                        <label  :style='{"width":"110px","padding":"0 12px 0 0","fontSize":"15px","color":"#333","textAlign":"left"}' class="layui-form-label">余额</label>
+                        <label  :style='{"width":"110px","padding":"0 12px 0 0","fontSize":"15px","color":"#333","textAlign":"left"}' class="layui-form-label">积分</label>
                         <div class="layui-input-inline input">
                             <input type="number" v-model="detail.newMoney" name="newMoney" id="newMoney" placeholder="余额" autocomplete="off" class="layui-input" disabled="disabled">
                         </div>
-                        <div class="layui-form-mid layui-word-aux">
+                        <!--div class="layui-form-mid layui-word-aux">
                             <i class="layui-icon" style="font-size: 20px;color: red;">&#xe65e;</i>
                             <a id="btn-recharge" href="javascript:void(0)">点我充值</a>
                            <div style="text-align: center;width: 100px;height: 41px;line-height: 41px;background-color: rgb(59 161 82);border-radius: 6px;margin-left: 10px;"
                                  @click="tixian" >提现</div>
-                            <!--<div style="text-align: center;width: 100px;height: 41px;line-height: 41px;background-color: rgb(59 161 82);border-radius: 6px;margin-left: 10px;"
-                                 @click="" >充值会员</div>-->
-                        </div>
+                        </div-->
                     </div>
 
-                    <div class="layui-form-item main_borderColor"  :style='{"padding":"10px","boxShadow":"0 0 0px rgba(255,0,0,.8)","margin":"0 0 10px 0","backgroundColor":"#fff","borderRadius":"1px","borderWidth":"0 0 1px 0","borderStyle":"solid"}'>
+                    <!--div-- class="layui-form-item main_borderColor"  :style='{"padding":"10px","boxShadow":"0 0 0px rgba(255,0,0,.8)","margin":"0 0 10px 0","backgroundColor":"#fff","borderRadius":"1px","borderWidth":"0 0 1px 0","borderStyle":"solid"}'>
                         <label  :style='{"width":"110px","padding":"0 12px 0 0","fontSize":"15px","color":"#333","textAlign":"left"}' class="layui-form-label">
                             完成率(百分比)
                         </label>
                         <div class="layui-input-block input">
                             <input type="text" disabled v-model="detail.wanchenglv" name="wanchenglv" id="wanchenglv" lay-verify="required|integer" placeholder="完成率(百分比)" autocomplete="off" class="layui-input">
                         </div>
-                    </div>
+                    </div-->
                     <div class="layui-form-item main_borderColor"  :style='{"padding":"10px","boxShadow":"0 0 0px rgba(255,0,0,.8)","margin":"0 0 10px 0","backgroundColor":"#fff","borderRadius":"1px","borderWidth":"0 0 1px 0","borderStyle":"solid"}'>
                         <label  :style='{"width":"110px","padding":"0 12px 0 0","fontSize":"15px","color":"#333","textAlign":"left"}' class="layui-form-label">
                             接取用户邮箱
@@ -425,14 +423,14 @@
                         _this.$message.error("两次密码不一致");
                         return;
                     }
-                    // if(_this.detail.password != _this.oldPassword){
-                    //     _this.$message.error("原密码输入错误");
-                    //     return;
-                    // }
-                    // if(_this.detail.password == _this.newPassword){
-                    //     _this.$message.error("新密码不能和原密码一致");
-                    //     return;
-                    // }
+                    if(_this.detail.password != _this.oldPassword){
+                        _this.$message.error("原密码输入错误");
+                        return;
+                    }
+                    if(_this.detail.password == _this.newPassword){
+                        _this.$message.error("新密码不能和原密码一致");
+                        return;
+                    }
                     _this.detail.password=_this.newPassword;//密码重新赋值
                     layui.http.request(`jiequyonghu/updatePassword`, 'get', {
                         oldPassword:_this.oldPassword,
@@ -445,19 +443,7 @@
                         _this.changePassword = false
                     });
                 },
-                tixian() {
-                    var mymessage = confirm("确定要提现吗？");
-                    if(!mymessage){
-                        return false;
-                    }
-                    let _this=this;
-                    _this.detail.newMoney=0;
-                    layui.http.requestJson(`jiequyonghu/update`, 'post', _this.detail, function(res) {
-                        alert("提现成功")
-                        window.location.reload();
 
-                    });
-                },
                 jump(url) {
                     jump(url)
                 },

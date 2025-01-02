@@ -127,7 +127,7 @@ public class RenwuCollectionView extends RenwuCollectionEntity implements Serial
 		/**
 		* 悬赏金额
 		*/
-		@ColumnInfo(comment="悬赏金额",type="decimal(10,2)")
+		@ColumnInfo(comment="积分",type="decimal(10,2)")
 		private Double renwuJine;
 		/**
 		* 任务热度
